@@ -1,0 +1,28 @@
+[0:00 — HOOK]
+In today's hyper-connected environment, we are constantly bombarded with screens, messages, and stress, leaving us with very little time to focus on our mental wellness. Many wellness tools lack security gates or smart integration, which is why I built the Mindfulness Guide to help people navigate their daily wellness habits safely. (pause)
+
+[0:20 — WHAT IT IS]
+The Mindfulness Guide is a secure, intelligent concierge agent developed on the Google Agent Development Kit framework. It is specifically designed to help you track your mood trends, monitor daily screen time limits, and recommend custom breathing and meditation exercises tailored to how you feel. (pause)
+
+[0:40 — SHOW THE BANNER]
+(show assets/cover_page_banner.png)
+At a glance, the Mindfulness Guide acts as your private wellness companion, combining automation with strong safety guidelines and local tool integration to make mindfulness a seamless part of your day. (pause)
+
+[1:00 — ARCHITECTURE]
+(show assets/architecture_diagram.png)
+Let us look at how it works behind the scenes. When you enter a query, it is first validated by our Security Checkpoint node, which scrubs personal information and filters prompt injection attacks. If it is safe, the workflow passes control to the Orchestrator Node, which acts as the main hub. From there, the Orchestrator delegates tasks to two specialized sub-agents: the Wellness Coach and the Mood and Screen Time Tracker. These sub-agents retrieve data and execute actions using our local Model Context Protocol or MCP server. Finally, before starting any routine, the graph halts at the Human Confirmation Node to pause for your approval. (pause)
+
+[2:00 — LIVE DEMO]
+(switch to playground at localhost:18081)
+Let me show you a live demonstration. (pause)
+First, I will ask the agent: "I want to start a 5-minute breathing routine." (pause)
+As you can see, the orchestrator delegates this to the Wellness Coach. It connects to our MCP server to fetch a Box breathing exercise. Notice how the playground pauses with an interactive prompt asking if I want to proceed. Once I type "yes", the routine begins. (pause)
+Next, let us test screen time logging. I will enter: "Log my screen time: 8 hours today." (pause)
+The orchestrator immediately routes this to the Mood and Screen Time Tracker. It logs the hours via the MCP server and flags a warning indicating that screen time is high. (pause)
+Finally, let us check safety. If I type a query containing an email address or phone number, the security checkpoint scrubs the personal details. If I enter a crisis keyword like "chest pain", the system immediately flags a critical safety event and outputs helpline contact details. (pause)
+
+[3:00 — SECURITY & MCP]
+This strict isolation is made possible by our Security Checkpoint, which logs all events as structured JSON logs for auditing. Our MCP server runs locally to provide secure, stdio-based tool execution for logging mood, tracking screen time, and retrieving techniques. (pause)
+
+[3:30 — IMPACT / CLOSE]
+By giving users a secure, private, and smart mindfulness partner, the Mindfulness Guide makes it safe and easy to form healthy digital habits. Thank you! (pause)
