@@ -1,28 +1,29 @@
 [0:00 — HOOK]
-In today's hyper-connected environment, we are constantly bombarded with screens, messages, and stress, leaving us with very little time to focus on our mental wellness. Many wellness tools lack security gates or smart integration, which is why I built the Mindfulness Guide to help people navigate their daily wellness habits safely. (pause)
+Today, we are always on our screens and feel stressed, leaving us with very little time for our mental health. Most wellness apps don't have good security or smart features. That is why I built the Mindfulness Guide to help people build healthy habits safely. (pause)
 
 [0:20 — WHAT IT IS]
-The Mindfulness Guide is a secure, intelligent concierge agent developed on the Google Agent Development Kit framework. It is specifically designed to help you track your mood trends, monitor daily screen time limits, and recommend custom breathing and meditation exercises tailored to how you feel. (pause)
+The Mindfulness Guide is a secure and smart AI assistant built with Google's Agent Development Kit. It helps you track your mood, watch your daily screen time, and get simple breathing or meditation exercises based on how you feel. (pause)
 
 [0:40 — SHOW THE BANNER]
 (show assets/cover_page_banner.png)
-At a glance, the Mindfulness Guide acts as your private wellness companion, combining automation with strong safety guidelines and local tool integration to make mindfulness a seamless part of your day. (pause)
+As you can see on the banner, it is a private wellness helper. It combines smart automation with strong safety rules to make mindfulness an easy part of your day. (pause)
 
 [1:00 — ARCHITECTURE]
 (show assets/architecture_diagram.png)
-Let us look at how it works behind the scenes. When you enter a query, it is first validated by our Security Checkpoint node, which scrubs personal information and filters prompt injection attacks. If it is safe, the workflow passes control to the Orchestrator Node, which acts as the main hub. From there, the Orchestrator delegates tasks to two specialized sub-agents: the Wellness Coach and the Mood and Screen Time Tracker. These sub-agents retrieve data and execute actions using our local Model Context Protocol or MCP server. Finally, before starting any routine, the graph halts at the Human Confirmation Node to pause for your approval. (pause)
+Let's look at the diagram to see how it works. When you type a message, it first goes to the Security Checkpoint. This checks for safety, hides personal info like emails, and blocks bad prompts. If it is safe, the message goes to the Orchestrator Node, which is the main brain. The Orchestrator sends the task to the right sub-agent: either the Wellness Coach or the Mood and Screen Time Tracker. These sub-agents run tools through our local MCP server to fetch exercises or log data. Finally, before starting any routine, the app stops at the Human Confirmation Node to ask for your permission. (pause)
 
 [2:00 — LIVE DEMO]
 (switch to playground at localhost:18081)
-Let me show you a live demonstration. (pause)
-First, I will ask the agent: "I want to start a 5-minute breathing routine." (pause)
-As you can see, the orchestrator delegates this to the Wellness Coach. It connects to our MCP server to fetch a Box breathing exercise. Notice how the playground pauses with an interactive prompt asking if I want to proceed. Once I type "yes", the routine begins. (pause)
-Next, let us test screen time logging. I will enter: "Log my screen time: 8 hours today." (pause)
-The orchestrator immediately routes this to the Mood and Screen Time Tracker. It logs the hours via the MCP server and flags a warning indicating that screen time is high. (pause)
-Finally, let us check safety. If I type a query containing an email address or phone number, the security checkpoint scrubs the personal details. If I enter a crisis keyword like "chest pain", the system immediately flags a critical safety event and outputs helpline contact details. (pause)
+Now, let me show you a live demo. (pause)
+First, I will ask the assistant: "I want to start a 5-minute breathing routine." (pause)
+The Orchestrator sends this to the Wellness Coach. It calls our MCP server to get a breathing exercise. Notice how the app pauses and asks if I want to proceed. When I type "yes", the routine starts. (pause)
+Next, let's log screen time. I will type: "Log my screen time: 8 hours today." (pause)
+The assistant routes this to the Screen Time Tracker, logs it in the database, and shows a warning that my screen time is too high. (pause)
+Finally, let's test safety. If I type a message with my email address or phone number, the app hides those details. If I type a crisis word like "chest pain", the app flags a critical event and immediately shows help numbers like the 988 lifeline. (pause)
 
 [3:00 — SECURITY & MCP]
-This strict isolation is made possible by our Security Checkpoint, which logs all events as structured JSON logs for auditing. Our MCP server runs locally to provide secure, stdio-based tool execution for logging mood, tracking screen time, and retrieving techniques. (pause)
+This safety is handled by the Security Checkpoint, which prints clean JSON logs for auditing. Our local MCP server runs securely on the machine to log mood, track screen time, and fetch breathing exercises. (pause)
 
 [3:30 — IMPACT / CLOSE]
-By giving users a secure, private, and smart mindfulness partner, the Mindfulness Guide makes it safe and easy to form healthy digital habits. Thank you! (pause)
+By giving you a secure, private, and smart assistant, the Mindfulness Guide makes it easy to build healthy habits. Thank you! (pause)
+

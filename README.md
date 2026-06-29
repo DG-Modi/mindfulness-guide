@@ -104,7 +104,7 @@ The spoken demonstration script for this project can be found in [DEMO_SCRIPT.tx
    git add .
    git commit -m "Initial commit: mindfulness-guide ADK agent"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/mindfulness-guide.git
+   git remote add origin https://github.com/DG-Modi/mindfulness-guide.git
    git push -u origin main
 
 3. Verify .gitignore includes:

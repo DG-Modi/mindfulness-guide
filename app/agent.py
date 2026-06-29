@@ -77,6 +77,13 @@ orchestrator = LlmAgent(
 
 # --- Workflow Node Functions ---
 
+def _get_text_content(content) -> str:
+    if isinstance(content, str):
+        return content
+    if hasattr(content, "parts") and content.parts:
+        return content.parts[0].text or ""
+    return ""
+
 @node
 def security_checkpoint(ctx: Context, node_input: types.Content) -> Event:
     """Security node to check input safety, scrub PII, detect prompt injection and crisis keywords."""
@@ -84,9 +91,7 @@ def security_checkpoint(ctx: Context, node_input: types.Content) -> Event:
     import json
     import datetime
 
-    user_text = ""
-    if node_input.parts:
-        user_text = node_input.parts[0].text or ""
+    user_text = _get_text_content(node_input)
 
     # 1. PII Scrubbing (Email, Phone, SSN)
     email_regex = r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+'
@@ -178,18 +183,14 @@ def security_event_node(ctx: Context, node_input: str) -> Event:
 @node(rerun_on_resume=True)
 async def orchestrate_node(ctx: Context, node_input: types.Content) -> Event:
     """Orchestrates incoming messages to sub-agents and updates ctx.state."""
-    user_text = ""
-    if node_input.parts:
-        user_text = node_input.parts[0].text or ""
+    user_text = _get_text_content(node_input)
         
     ctx.state["last_user_input"] = user_text
     
     # Run the orchestrator agent programmatically
     result_content = await ctx.run_node(orchestrator, node_input=node_input)
     
-    response_text = ""
-    if result_content.parts:
-        response_text = result_content.parts[0].text or ""
+    response_text = _get_text_content(result_content)
         
     ctx.state["last_orchestrator_output"] = response_text
     return Event(output=response_text)
